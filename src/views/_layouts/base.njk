@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="keywords" content="digital dashboard april six jira">
+        <meta name="description" content="Digital Dashboard for all AprilSix Digital JIRA Tickets">
+
+        <title>Nas Fitness</title>
+
+        <link rel="stylesheet" href="{{'/css/app.css' | url }}">
+    </head>
+    <body>
+        {% include "header.njk" %}
+
+        <main id="content">
+            {{ content | safe }}
+        </main>
+
+        {% include "footer.njk" %}
+        <script src="{{ '/js/app.js' | url }}" defer></script>
+    </body>
+</html>

@@ -1,0 +1,37 @@
+{
+    "name": "nasfitness.co.uk",
+    "version": "1.0.0",
+    "description": "Website for Nas Fitness",
+    "main": "index.js",
+    "directories": {
+        "doc": "docs"
+    },
+    "scripts": {
+        "start": "npm-run-all --parallel watch:*",
+        "build": "npm-run-all build:*",
+        "watch:mix": "mix watch",
+        "build:mix": "mix --production",
+        "watch:eleventy": "eleventy --serve",
+        "build:eleventy": "eleventy"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/relinscar/relinscar.github.io.git"
+    },
+    "author": "John Tilley",
+    "license": "UNLICENSED",
+    "bugs": {
+        "url": "https://github.com/relinscar/relinscar.github.io/issues"
+    },
+    "homepage": "https://github.com/relinscar/relinscar.github.io#readme",
+    "devDependencies": {
+        "@11ty/eleventy": "^1.0.1",
+        "laravel-mix": "^6.0.49",
+        "npm-run-all": "^4.1.5",
+        "sass": "^1.54.0",
+        "sass-loader": "^12.1.0",
+        "style-dictionary": "^3.7.1",
+        "tailwindcss": "^3.1.7"
+    },
+    "dependencies": {}
+}

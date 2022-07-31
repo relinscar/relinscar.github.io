@@ -1,0 +1,19 @@
+# dependencies
+/node_modules
+/vendor
+
+# misc
+.DS_Store
+.env
+
+# generated logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+jira-error.log*
+
+# phpstorm specific
+.idea
+
+# redundant generated files
+mix-manifest.json

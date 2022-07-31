@@ -1,0 +1,23 @@
+// There are the default tailwin break points. They should be overwritten in a _screens.scss file
+$breakpoints: (
+    'sm': 640px,
+    'md': 768px,
+    'lg': 1024px,
+    'xl': 1280px,
+    '2xl': 1536px,
+) !default;
+
+@mixin breakpoint($breakpoint) {
+    @if map-has-key($breakpoints, $breakpoint) {
+        // Prints a media query based on the value
+        @media (min-width: map-get($breakpoints, $breakpoint)) {
+            @content;
+        }
+    }
+
+    // If the key doesn't exist in the map
+    @else {
+        @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+            + "Available breakpoints are: #{map-keys($breakpoints)}.";
+    }
+}

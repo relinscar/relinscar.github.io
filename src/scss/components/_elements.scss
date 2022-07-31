@@ -1,0 +1,32 @@
+h1 {
+    font-size: 60px;
+    color: $color-indigo-600;
+
+    @include breakpoint(tablet) {
+        color: $color-emerald-600;
+    }
+
+    @include breakpoint(sm) {
+        color: $color-rose-600;
+    }
+
+    @include breakpoint(md) {
+        color: $color-blue-600;
+    }
+
+    @include breakpoint(laptop) {
+        color: $color-orange-600;
+    }
+
+    @include breakpoint(lg) {
+        color: $color-red-600;
+    }
+
+    @include breakpoint(2xl) {
+        color: $color-green-600;
+    }
+
+    @include breakpoint(desktop) {
+        color: $color-gray-600;
+    }
+}

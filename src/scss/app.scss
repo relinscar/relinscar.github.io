@@ -1,0 +1,21 @@
+// Settings for the site css
+@import "theme/screens";
+@import "theme/breakpoints";
+@import "theme/colors";
+@import "theme/fonts";
+
+// The tailwind base classes reset and normalise all the css, so we want this first
+@tailwind base;
+
+// The tailwind components import only includes the container classes, so we want this before our theme overrides
+@tailwind components;
+
+// Atomised elements. These cover html tags such as button, table etc
+@import "components/elements";
+
+// Layout components. These cover layout semantic divs such as header, footer, article, etc
+@import "components/layout";
+
+// Putting the tailwind utilities down here means we can use them as overrides for our set styles.
+// Utility classes are best used as small modifiers for the main theme
+@tailwind utilities;
