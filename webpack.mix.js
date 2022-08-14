@@ -42,9 +42,42 @@ const formatConfig = (themeConfig, name = null) => {
     return formattedConfig;
 };
 
+
+
+
+
+// This changes a config to one compatible with style-dictionary
+const formatConfigRecursive = (themeConfig, name = null) => {
+    const formattedConfig = {};
+    if (name) {
+        formattedConfig[name] = {};
+        formattedConfig[name] = formatConfigRecursive(themeConfig);
+    } else {
+        Object.entries(themeConfig).forEach(([key, value]) => {
+            formattedConfig[key] = {};
+            if (typeof value != "object") {
+                formattedConfig[key]["value"] = value;
+            } else {
+                formattedConfig[key] = formatConfigRecursive(themeConfig);
+            }
+        });
+    }
+    return formattedConfig;
+};
+
+
+
+
+
+
 // const tokens = formatConfig(theme);
 const themeScreens = formatConfig(theme.screens);
 const themeColors = formatConfig(theme.colors, "color");
+
+const themeScreensRecursive = formatConfigRecursive(theme.screens);
+console.log(themeScreens);
+console.log(themeScreensRecursive);
+
 
 // Build the breakpoints as a flat map
 StyleDictionary.extend({
