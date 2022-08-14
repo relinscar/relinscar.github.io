@@ -12,72 +12,25 @@ const { theme } = resolveConfig(tailwindConfig);
 // This changes a config to one compatible with style-dictionary
 const formatConfig = (themeConfig, name = null) => {
     const formattedConfig = {};
-    if (name) formattedConfig[name] = {};
-    Object.entries(themeConfig).forEach(([key1, value1]) => {
-        name ? (formattedConfig[name][key1] = {}) : (formattedConfig[key1] = {});
-        if (typeof value1 != "object") {
-            name ? (formattedConfig[name][key1]["value"] = value1) : (formattedConfig[key1]["value"] = value1);
-        } else {
-            Object.entries(value1).forEach(([key2, value2]) => {
-                name ? (formattedConfig[name][key1][key2] = {}) : (formattedConfig[key1][key2] = {});
-                if (typeof value2 != "object") {
-                    name
-                        ? (formattedConfig[name][key1][key2]["value"] = value2)
-                        : (formattedConfig[key1][key2]["value"] = value2);
-                } else {
-                    Object.entries(theme.colors).forEach(([key3, value3]) => {
-                        name
-                            ? (formattedConfig[name][key1][key2][key3] = {})
-                            : (formattedConfig[key1][key2][key3] = {});
-                        if (typeof value3 != "object") {
-                            name
-                                ? (formattedConfig[name][key1][key2][key3]["value"] = value3)
-                                : (formattedConfig[key1][key2][key3]["value"] = value3);
-                        }
-                    });
-                }
-            });
-        }
-    });
-    return formattedConfig;
-};
-
-
-
-
-
-// This changes a config to one compatible with style-dictionary
-const formatConfigRecursive = (themeConfig, name = null) => {
-    const formattedConfig = {};
     if (name) {
         formattedConfig[name] = {};
-        formattedConfig[name] = formatConfigRecursive(themeConfig);
+        formattedConfig[name] = formatConfig(themeConfig);
     } else {
         Object.entries(themeConfig).forEach(([key, value]) => {
             formattedConfig[key] = {};
             if (typeof value != "object") {
                 formattedConfig[key]["value"] = value;
             } else {
-                formattedConfig[key] = formatConfigRecursive(themeConfig);
+                formattedConfig[key] = formatConfig(value);
             }
         });
     }
     return formattedConfig;
 };
 
-
-
-
-
-
 // const tokens = formatConfig(theme);
 const themeScreens = formatConfig(theme.screens);
 const themeColors = formatConfig(theme.colors, "color");
-
-const themeScreensRecursive = formatConfigRecursive(theme.screens);
-console.log(themeScreens);
-console.log(themeScreensRecursive);
-
 
 // Build the breakpoints as a flat map
 StyleDictionary.extend({
@@ -91,6 +44,14 @@ StyleDictionary.extend({
                     destination: "_screens.scss",
                     format: "scss/map-flat",
                     mapName: "breakpoints",
+                    options: {
+                        fileHeader: ( defaultMessage ) => {
+                            return [
+                                `Do not edit directly`,
+                                `See src/scss/theme/_breakpoints.scss for more information`
+                            ]
+                        }
+                    }
                 },
             ],
         },
@@ -108,6 +69,14 @@ StyleDictionary.extend({
                 {
                     destination: "_colors.scss",
                     format: "scss/variables",
+                    options: {
+                        fileHeader: ( defaultMessage ) => {
+                            return [
+                                `Do not edit directly`,
+                                `These colour variables are extracted from tailwind`
+                            ]
+                        }
+                    }
                 },
             ],
         },

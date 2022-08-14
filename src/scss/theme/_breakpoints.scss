@@ -7,6 +7,16 @@ $breakpoints: (
     '2xl': 1536px,
 ) !default;
 
+/**
+ * You can add breakpoints to your sass using the mixin below like this
+ *
+ * @include breakpoint(sm) {
+ *     color: $color-rose-600;
+ * }
+ *
+ * The available breakpoints are found in the $breakpoints array above. This can be overriden with
+ * a custom $breakpoint array.
+ */
 @mixin breakpoint($breakpoint) {
     @if map-has-key($breakpoints, $breakpoint) {
         // Prints a media query based on the value
