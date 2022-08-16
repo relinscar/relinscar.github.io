@@ -10,6 +10,9 @@
 // The tailwind components import only includes the container classes, so we want this before our theme overrides
 @tailwind components;
 
+// Layout components. These cover layout semantic divs such as header, footer, article, etc
+@import "components/demo";
+
 // Atomised elements. These cover html tags such as button, table etc
 @import "components/elements";
 
