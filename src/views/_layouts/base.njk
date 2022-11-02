@@ -2,20 +2,23 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="keywords" content="digital dashboard april six jira">
-        <meta name="description" content="Digital Dashboard for all AprilSix Digital JIRA Tickets">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Nas Fitness | Nasreen Buchan Personal Fitness Trainer in Drayton Portsmouth Hampshire</title>
 
-        <title>Nas Fitness</title>
+        <meta name="author" content="Nasreen Buchan">
+        <meta name="keywords" content="keywords,here">
+        <meta name="description" content="description here">
 
         <link rel="stylesheet" href="{{'/css/app.css' | url }}">
     </head>
-    <body>
+    <body class="bg-gray-400 font-sans leading-normal tracking-normal">
         {% include "header.njk" %}
 
-        <main id="content">
-            {{ content | safe }}
+        <main id="content" class="bg-white mt-24 md:mt-18">
+            <div class="container shadow-lg mx-auto">
+                {{ content | safe }}
+            </div>
         </main>
 
         {% include "footer.njk" %}

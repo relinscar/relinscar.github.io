@@ -1,39 +1,39 @@
 // Because we're so attached to sass but we want to take advantage of tailwind as a framework we
 // put in some extra effort to retrieve the tailwind theme variables and insert them into sass.
 // We'll do this using style dictionary
-const resolveConfig = require("tailwindcss/resolveConfig");
-const tailwindConfig = require("./tailwind.config.js");
-const StyleDictionary = require("style-dictionary");
-const _ = require("lodash");
+const resolveConfig = require( "tailwindcss/resolveConfig" );
+const tailwindConfig = require( "./tailwind.config.js" );
+const StyleDictionary = require( "style-dictionary" );
+const _ = require( "lodash" );
 
 // Grab just the theme data from the Tailwind config.
-const { theme } = resolveConfig(tailwindConfig);
+const { theme } = resolveConfig( tailwindConfig );
 
 // This changes a config to one compatible with style-dictionary
-const formatConfig = (themeConfig, name = null) => {
+const formatConfig = ( themeConfig, name = null ) => {
     const formattedConfig = {};
-    if (name) {
-        formattedConfig[name] = {};
-        formattedConfig[name] = formatConfig(themeConfig);
+    if ( name ) {
+        formattedConfig[ name ] = {};
+        formattedConfig[ name ] = formatConfig( themeConfig );
     } else {
-        Object.entries(themeConfig).forEach(([key, value]) => {
-            formattedConfig[key] = {};
-            if (typeof value != "object") {
-                formattedConfig[key]["value"] = value;
+        Object.entries( themeConfig ).forEach( ( [ key, value ] ) => {
+            formattedConfig[ key ] = {};
+            if ( typeof value != "object" ) {
+                formattedConfig[ key ][ "value" ] = value;
             } else {
-                formattedConfig[key] = formatConfig(value);
+                formattedConfig[ key ] = formatConfig( value );
             }
-        });
+        } );
     }
     return formattedConfig;
 };
 
 // const tokens = formatConfig(theme);
-const themeScreens = formatConfig(theme.screens);
-const themeColors = formatConfig(theme.colors, "color");
+const themeScreens = formatConfig( theme.screens );
+const themeColors = formatConfig( theme.colors, "color" );
 
 // Build the breakpoints as a flat map
-StyleDictionary.extend({
+StyleDictionary.extend( {
     tokens: themeScreens,
     platforms: {
         scss: {
@@ -56,10 +56,10 @@ StyleDictionary.extend({
             ],
         },
     },
-}).buildAllPlatforms();
+} ).buildAllPlatforms();
 
 // Build all the colours as individual variables
-StyleDictionary.extend({
+StyleDictionary.extend( {
     tokens: themeColors,
     platforms: {
         scss: {
@@ -81,30 +81,34 @@ StyleDictionary.extend({
             ],
         },
     },
-}).buildAllPlatforms();
+} ).buildAllPlatforms();
 
 // Ok now we can do our mix stuff
 // webpack.mix.js
-let mix = require("laravel-mix");
+let mix = require( "laravel-mix" );
 
 // Then we compile our sass
 mix.sass(
     "src/scss/app.scss",
     "public/css",
     {
-        implementation: require("sass"),
+        implementation: require( "sass" ),
         sassOptions: {
             outputStyle: mix.inProduction() ? "compressed" : "expanded",
             sourceMap: !mix.inProduction(),
         },
     },
-    [require("tailwindcss")]
-).options({ processCssUrls: false });
+    [ require( "tailwindcss" ) ]
+).options( { processCssUrls: false } );
 
 // Mix the javascript together
-mix.js("src/js/app.js", "public/js");
+mix.combine( [
+    "src/js/jquery-3.6.1.min.js",
+    "src/js/jquery.bez.min.js",
+    "src/js/app.js"
+], "public/js/app.js" );
 
 // Make source maps if developing
-if (!mix.inProduction()) {
+if ( !mix.inProduction() ) {
     mix.sourceMaps();
 }

@@ -1,5 +1,10 @@
-// If you want to use more features from jQuery UI add each widget separately
-// import $ from "jquery";
-// window.$ = window.jQuery = $;
 
-console.log("Hello!");
+//Javascript to toggle the menu
+document
+    .getElementById( 'nav-toggle' )
+    .onclick = function () {
+        document
+            .getElementById( "nav-content" )
+            .classList
+            .toggle( "hidden" );
+    }
