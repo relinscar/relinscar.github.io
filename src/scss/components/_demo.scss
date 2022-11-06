@@ -3,11 +3,11 @@ $radius-12: 12px;
 $radius-24: 24px;
 
 // Scheme 3
-$color1: #574ae2;
-$color2: #222a68;
-$color3: #654597;
-$color4: #ab81cd;
-$color5: #e2adf2;
+$color1: $header-color;
+$color2: $primary-color;
+$color3: $secondary-color;
+$color4: $panel-primary-color;
+$color5: $panel-secondary-color;
 
 $radius: $radius-none;
 // $radius: $radius-12;

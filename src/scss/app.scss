@@ -4,13 +4,22 @@
 @import "theme/colors";
 @import "theme/fonts";
 
+// Site settings
+@import "settings";
+
+// Font Awesome
+@import "./fontawesome/fontawesome.scss";
+@import "./fontawesome/solid.scss";
+@import "./fontawesome/regular.scss";
+@import "./fontawesome/brands.scss";
+
 // The tailwind base classes reset and normalise all the css, so we want this first
 @tailwind base;
 
 // The tailwind components import only includes the container classes, so we want this before our theme overrides
 @tailwind components;
 
-// Layout components. These cover layout semantic divs such as header, footer, article, etc
+// Demo
 @import "components/demo";
 
 // Atomised elements. These cover html tags such as button, table etc

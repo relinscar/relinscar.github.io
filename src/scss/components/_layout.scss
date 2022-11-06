@@ -1,0 +1,39 @@
+header {
+    background-color: $header-color;
+    color: $color-white;
+}
+
+.header-container {
+    @apply container;
+    margin: 0 auto;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo-image {
+    width: 200px;
+}
+
+.telephone {
+    font-size: 20px;
+    display: none;
+
+    @include breakpoint(sm) {
+        display: block;
+    }
+}
+
+nav {
+    background-color: $panel-primary-color;
+    color: $color-white;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+}
+
+.nav-container {
+    @apply container;
+    margin: 0 auto;
+    padding: 1rem;
+}

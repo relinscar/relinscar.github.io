@@ -10,12 +10,13 @@
         <meta name="keywords" content="keywords,here">
         <meta name="description" content="description here">
 
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700,italic,700italic">
         <link rel="stylesheet" href="{{'/css/app.css' | url }}">
     </head>
-    <body class="bg-gray-400 font-sans leading-normal tracking-normal">
+    <body class="bg-gray-200 font-sans leading-normal tracking-normal">
         {% include "header.njk" %}
 
-        <main id="content" class="bg-white mt-24 md:mt-18">
+        <main id="content" class="bg-white pt-4 pb-8">
             <div class="container shadow-lg mx-auto">
                 {{ content | safe }}
             </div>
