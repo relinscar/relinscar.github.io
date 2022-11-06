@@ -5,22 +5,23 @@
                 <img class="logo-image" src="/assets/img/nas-logo-white.png" />
             </a>
         </div>
-        <div class="telephone hidden md:block">
+        <div class="telephone">
             <a href="tel:07745 406600"> 07745 406600 </a>
         </div>
-        <div class="nav-toggle md:hidden">
+        <div class="nav-toggle">
             <button id="js-nav-toggle" class="flex items-center">
                 <span class="mr-2 text-lg uppercase">Menu</span>
-                <i class="fa-solid fa-bars fa-lg"></i>
+                <i id="js-nav-open" class="nav-open fa-solid fa-bars fa-lg fa-fw"></i>
+                <i id="js-nav-close" class="nav-close fa-solid fa-close fa-lg fa-fw"></i>
             </button>
         </div>
     </div>
 </header>
 
 <nav>
-    <div class="nav-container">
+    <div class="nav-container" id="js-nav-toggle-target">
         {% set navPages = collections.all | eleventyNavigation %}
-        <ul class="list-reset lg:flex flex-1 items-center">
+        <ul class="nav-bar">
             {%- for entry in navPages %}
             <li class="mr-4 {% if entry.url == page.url %}active underline{% endif %}">
                 <a href="{{ entry.url }}">{{ entry.title }}</a>

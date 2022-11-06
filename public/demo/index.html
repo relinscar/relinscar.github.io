@@ -1,42 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Nas Fitness | Nasreen Buchan Personal Fitness Trainer in Drayton Portsmouth Hampshire</title>
 
-        <meta name="author" content="Nasreen Buchan">
-        <meta name="keywords" content="keywords,here">
-        <meta name="description" content="description here">
+        <meta name="author" content="Nasreen Buchan" />
+        <meta name="keywords" content="keywords,here" />
+        <meta name="description" content="description here" />
 
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700,italic,700italic">
-        <link rel="stylesheet" href="/css/app.css">
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700,italic,700italic"
+        />
+        <link rel="stylesheet" href="/css/app.css" />
     </head>
-    <body class="bg-gray-200 font-sans leading-normal tracking-normal">
-        <header>
+    <body class="bg-gray-100 font-sans leading-normal tracking-normal">
+        <div class="site-wrapper">
+            <header>
     <div class="header-container">
         <div class="logo">
             <a href="/">
                 <img class="logo-image" src="/assets/img/nas-logo-white.png" />
             </a>
         </div>
-        <div class="telephone hidden md:block">
+        <div class="telephone">
             <a href="tel:07745 406600"> 07745 406600 </a>
         </div>
-        <div class="nav-toggle md:hidden">
+        <div class="nav-toggle">
             <button id="js-nav-toggle" class="flex items-center">
                 <span class="mr-2 text-lg uppercase">Menu</span>
-                <i class="fa-solid fa-bars fa-lg"></i>
+                <i id="js-nav-open" class="nav-open fa-solid fa-bars fa-lg fa-fw"></i>
+                <i id="js-nav-close" class="nav-close fa-solid fa-close fa-lg fa-fw"></i>
             </button>
         </div>
     </div>
 </header>
 
 <nav>
-    <div class="nav-container">
+    <div class="nav-container" id="js-nav-toggle-target">
         
-        <ul class="list-reset lg:flex flex-1 items-center">
+        <ul class="nav-bar">
             <li class="mr-4 ">
                 <a href="/">Home</a>
             </li>
@@ -63,9 +68,9 @@
 </nav>
 
 
-        <main id="content" class="bg-white pt-4 pb-8">
-            <div class="container shadow-lg mx-auto">
-                
+            <main>
+                <div class="main-container">
+                    
 <h1 class="text-center mb-2">Theme style demo</h1>
 
 <div class="palette-holder mb-4">
@@ -102,10 +107,19 @@
     </div>
 
 </div>
-            </div>
-        </main>
+                </div>
+            </main>
 
-        
+            <footer>
+    <div class="footer-container">
+        <div class="social-links">
+            <a class="social-link" href="https://www.facebook.com/nasreen.buchan" target="_blank">
+                <i class="fa-brands fa-square-facebook fa-2xl mr-2"></i> Find me on Facebook
+            </a>
+        </div>
+    </div>
+</footer>
+        </div>
         <script src="/js/app.js" defer></script>
     </body>
 </html>
